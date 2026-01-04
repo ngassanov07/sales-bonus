@@ -27,9 +27,13 @@ function calculateBonusByProfit(index, total, seller) {
  * Функция для анализа данных продаж
  */
 function analyzeSalesData(data, options) {
-    if (!data || !Array.isArray(data.sellers) || !Array.isArray(data.products) || !Array.isArray(data.purchase_records)) {
-        throw new Error('Некорректные входные данные');
-    }
+    if (!data 
+    || !Array.isArray(data.sellers) || data.sellers.length === 0
+    || !Array.isArray(data.products) || data.products.length === 0
+    || !Array.isArray(data.purchase_records) || data.purchase_records.length === 0
+) {
+    throw new Error('Некорректные входные данные');
+}
 
     const { calculateRevenue, calculateBonus } = options;
     if (!calculateRevenue || !calculateBonus) {
